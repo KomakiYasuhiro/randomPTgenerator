@@ -31,18 +31,22 @@
 
     <v-content>
       <Generator/>
+      <PartyList/>
     </v-content>
   </v-app>
 </template>
 
 <script>
 import Generator from './components/Generator';
+import PartyList from './components/PartyList';
+
 
 export default {
   name: 'App',
 
   components: {
     Generator,
+    PartyList,
   },
 
   data: () => ({

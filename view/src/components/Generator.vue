@@ -10,12 +10,16 @@
 
   <script>
   export default {
-    name: 'Gene',
+    data () {
+      return {
+        pokemon: []
+      }
+    },
     methods: {
       generate() {
         this.axios.get('https://httpbin.org/get')
           .then((response) => {
-            alert("ぽけ"+response.data.origin);
+            this.msg=response.data.origin;
           })
           .catch((e) => {
             alert(e);
