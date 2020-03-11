@@ -71,12 +71,25 @@ func main() {
 		fmt.Println(err.Error())
 		os.Exit(1)
 	}
+
+	//選出されたポケモンを入れるJsonの作成
+	type ExPokemons []Pokemon
+	var exPokemons ExPokemons
 	//ポケモンjsonのデータが入る配列
 	var pokemon []Pokemon
 	json.Unmarshal(raw, &pokemon)
 	//6体をランダムで抽出
 	noList := pickup(0, 400, 6)
-	for i, no := range noList {
-		fmt.Printf("%d体目\n 図鑑No : %d\n ポケモン名 : %s\n", i+1, pokemon[no].No, pokemon[no].Name)
+	//noListの要素iには図鑑ナンバーが乗ってくるのでJSON形式のpokemon[]の添字として使える
+	for _, no := range noList {
+		//fmt.Printf("%d体目\n 図鑑No : %d\n ポケモン名 : %s\n", i+1, pokemon[no].No, pokemon[no].Name)
+		poke := Pokemon{
+			Name:    pokemon[no].Name,
+			No:      pokemon[no].No,
+			Evoling: pokemon[no].Evoling,
+		}
+		exPokemons = append(exPokemons, poke)
 	}
+	b, _ := json.Marshal(exPokemons)
+	fmt.Printf("%s\n", b)
 }
