@@ -1,7 +1,6 @@
 package main
 
 import (
-	"bufio"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
@@ -9,10 +8,15 @@ import (
 	"os"
 	"time"
 
-	_"./statik"
+	_ "myrepo/pokemonPT/statik"
+
 	"github.com/rakyll/statik/fs"
 )
 
+// Pokemon struct is
+// Name : ポケモン名
+// No : 図鑑番号
+// Evoling : 進化するかどうか
 type Pokemon struct {
 	Name    string `json:"name"`
 	No      int    `json:"no"`
