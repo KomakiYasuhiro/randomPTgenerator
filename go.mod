@@ -1,4 +1,4 @@
-module myrepo/pokemonPT
+module myrepo/randomPTgenerator
 
 go 1.14
 
