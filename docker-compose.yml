@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  view:
+    build: ./view
+    ports:
+      - 8080:8080
+    volumes:
+      - ./view:/app
+    command: yarn serve
+    stdin_open: true
+    tty: true
+
+  server:
+    build: ./server
+    ports:
+      - 8888:8888
+    volumes:
+      - ./server:/api
